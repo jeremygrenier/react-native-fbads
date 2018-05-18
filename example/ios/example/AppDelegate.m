@@ -8,7 +8,9 @@
  */
 
 #import "AppDelegate.h"
+
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <FBAudienceNetwork/FBAudienceNetwork.h>
 
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
@@ -18,6 +20,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   // Setup Facebook SDK
   [[FBSDKApplicationDelegate sharedInstance] application:application didFinishLaunchingWithOptions:launchOptions];
+
+  NSString *deviceHash = [FBAdSettings testDeviceHash];
+  [FBAdSettings addTestDevice:deviceHash];
 
   // React Native Setup
   NSURL *jsCodeLocation = [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"example/index" fallbackResource:nil];
