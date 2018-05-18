@@ -10,26 +10,38 @@
 #import "CTKNativeAdView.h"
 #import <React/RCTUtils.h>
 
-@interface CTKNativeAdView ()
+@interface FBAdImage (json)
+@end
 
+@implementation FBAdImage (json)
+
+- (NSDictionary *)json
+{
+    NSString *url = [self.url absoluteString];
+    return @{@"url": url, @"width": @(self.width), @"height": @(self.height)};
+}
+
+@end
+
+@interface CTKNativeAdView ()
 @end
 
 @implementation CTKNativeAdView
 
 - (void)setNativeAd:(FBNativeAd *)nativeAd {
-  _nativeAd = nativeAd;
+    _nativeAd = nativeAd;
 
-  _onAdLoaded(@{
-    @"title": _nativeAd.title,
-    @"subtitle": _nativeAd.subtitle,
-    @"description": _nativeAd.body,
-    @"socialContext": _nativeAd.socialContext,
-    @"callToActionText": _nativeAd.callToAction,
-    @"coverImage": _nativeAd.coverImage ? [_nativeAd.coverImage.url absoluteString] : [NSNull null],
-    @"icon": _nativeAd.icon ? [_nativeAd.icon.url absoluteString] : [NSNull null],
-  });
+    _onAdLoaded(@{
+                  @"title": _nativeAd.title,
+                  @"subtitle": _nativeAd.subtitle,
+                  @"description": _nativeAd.body,
+                  @"socialContext": _nativeAd.socialContext,
+                  @"callToActionText": _nativeAd.callToAction,
+                  @"coverImage": _nativeAd.coverImage ? [_nativeAd.coverImage json]  : [NSNull null],
+                  @"icon": _nativeAd.icon ? [_nativeAd.icon json] : [NSNull null],
+                  });
 
-  [_nativeAd registerViewForInteraction:self withViewController:RCTKeyWindow().rootViewController];
+    [_nativeAd registerViewForInteraction:self withViewController:RCTKeyWindow().rootViewController];
 }
 
 @end

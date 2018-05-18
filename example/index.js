@@ -5,7 +5,7 @@
  */
 
 import React from "react";
-import { AppRegistry, StyleSheet, Text, TouchableOpacity, ScrollView } from "react-native";
+import { AppRegistry, StyleSheet, Text, TouchableOpacity, ScrollView, View } from "react-native";
 
 import FullAd from "./components/FullAd";
 import { NativeAdsManager, InterstitialAdManager, BannerView, AdSettings } from "../";
@@ -13,17 +13,17 @@ import { ADS_ID } from "./Constants";
 
 AdSettings.addTestDevice(AdSettings.currentDeviceHash);
 
-const adsManager = new NativeAdsManager(ADS_ID.native);
-
 class MainApp extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.adsManager = new NativeAdsManager(ADS_ID.native);
+    }
+
     showFullScreenAd = () => {
         InterstitialAdManager.showAd(ADS_ID.interstitial)
-            .then(didClick => {
-                console.log(didClick);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+            .then(console.log)
+            .catch(console.log);
     };
 
     onBannerAdPress = () => console.log("Ad clicked!");
@@ -37,10 +37,13 @@ class MainApp extends React.Component {
                     One of the coolest features about native ads is that they nicely integrate with the general app look
                     & feel
                 </Text>
-                <FullAd adsManager={adsManager} />
+                <View style={styles.separator} />
+                <FullAd adsManager={this.adsManager} />
+                <View style={styles.separator} />
                 <TouchableOpacity onPress={this.showFullScreenAd}>
                     <Text>Show interstitial ad</Text>
                 </TouchableOpacity>
+                <View style={styles.separator} />
                 <BannerView
                     type="large"
                     placementId={ADS_ID.banner}
@@ -65,7 +68,11 @@ const styles = StyleSheet.create({
     welcome: {
         fontSize: 20,
         textAlign: "center",
-        margin: 10
+        margin: 10,
+        marginTop: 30
+    },
+    separator: {
+        height: 20
     }
 });
 

@@ -9,7 +9,7 @@ import { withNativeAd } from '../../';
 const FullNativeAd = withNativeAd(({ nativeAd }) => (
   <View style={styles.container}>
     {nativeAd.icon && (
-      <Image style={styles.icon} source={{ uri: nativeAd.icon }} />
+      <Image style={styles.icon} source={{ uri: nativeAd.icon.url }} />
     )}
     <View>
       <Text style={styles.title}>{nativeAd.title}</Text>

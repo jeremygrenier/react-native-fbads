@@ -68,11 +68,22 @@ public class NativeAdView extends ReactViewGroup {
 
         // Check as they might be null because of memory issues on low-end devices
         if (coverImage != null) {
-            event.putString("coverImage", coverImage.getUrl());
+
+            WritableMap map = Arguments.createMap();
+            map.putString("url", coverImage.getUrl());
+            map.putDouble("width", coverImage.getWidth());
+            map.putDouble("height", coverImage.getHeight());
+
+            event.putMap("coverImage", map);
         }
 
         if (iconImage != null) {
-            event.putString("icon", iconImage.getUrl());
+            WritableMap map = Arguments.createMap();
+            map.putString("url", iconImage.getUrl());
+            map.putDouble("width", iconImage.getWidth());
+            map.putDouble("height", iconImage.getHeight());
+
+            event.putMap("icon", map);
         }
 
         mEventEmitter.receiveEvent(getId(), "onAdLoaded", event);
