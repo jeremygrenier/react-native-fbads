@@ -38,7 +38,10 @@ RCT_EXPORT_METHOD(
     
     _rewardedVideoAd = [[FBRewardedVideoAd alloc] initWithPlacementID:placementId];
     _rewardedVideoAd.delegate = self;
-    [_rewardedVideoAd loadAd];
+
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [_rewardedVideoAd loadAd];
+    });
 }
 
 RCT_EXPORT_METHOD(showAd: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject) {
