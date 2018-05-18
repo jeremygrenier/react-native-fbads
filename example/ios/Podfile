@@ -1,0 +1,27 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+inhibit_all_warnings!
+
+node_module_path = '../../node_modules/'
+
+target 'example' do
+    # Pods for example
+    pod 'React', :path => File.join(node_module_path, 'react-native'), :subspecs => [
+    'ART',
+    'RCTActionSheet',
+    'RCTAnimation',
+    'RCTGeolocation',
+    'RCTImage',
+    'RCTNetwork',
+    'RCTPushNotification',
+    'RCTSettings',
+    'RCTText',
+    'RCTVibration',
+    'RCTWebSocket',
+    'RCTLinkingIOS'
+    ]
+
+    pod 'react-native-fbsdk', :path => File.join(node_module_path, 'react-native-fbsdk/ios'), :subspecs => ['Core']
+    pod 'ReactNativeFBAds', :path => '../../'
+end

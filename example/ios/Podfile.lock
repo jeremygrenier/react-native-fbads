@@ -1,0 +1,92 @@
+PODS:
+  - Bolts (1.9.0):
+    - Bolts/AppLinks (= 1.9.0)
+    - Bolts/Tasks (= 1.9.0)
+  - Bolts/AppLinks (1.9.0):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.9.0)
+  - FBAudienceNetwork (4.28.1)
+  - FBSDKCoreKit (4.32.0):
+    - Bolts (~> 1.7)
+  - React (0.40.0):
+    - React/Core (= 0.40.0)
+  - react-native-fbsdk/Core (0.7.0):
+    - FBSDKCoreKit
+    - React
+  - React/ART (0.40.0):
+    - React/Core
+  - React/Core (0.40.0):
+    - React/cxxreact
+    - React/yoga
+  - React/cxxreact (0.40.0):
+    - React/jschelpers
+  - React/jschelpers (0.40.0)
+  - React/RCTActionSheet (0.40.0):
+    - React/Core
+  - React/RCTAnimation (0.40.0):
+    - React/Core
+  - React/RCTGeolocation (0.40.0):
+    - React/Core
+  - React/RCTImage (0.40.0):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTLinkingIOS (0.40.0):
+    - React/Core
+  - React/RCTNetwork (0.40.0):
+    - React/Core
+  - React/RCTPushNotification (0.40.0):
+    - React/Core
+  - React/RCTSettings (0.40.0):
+    - React/Core
+  - React/RCTText (0.40.0):
+    - React/Core
+  - React/RCTVibration (0.40.0):
+    - React/Core
+  - React/RCTWebSocket (0.40.0):
+    - React/Core
+  - React/yoga (0.40.0)
+  - ReactNativeFBAds (4.2.2):
+    - FBAudienceNetwork
+    - React
+
+DEPENDENCIES:
+  - react-native-fbsdk/Core (from `../../node_modules/react-native-fbsdk/ios`)
+  - React/ART (from `../../node_modules/react-native`)
+  - React/RCTActionSheet (from `../../node_modules/react-native`)
+  - React/RCTAnimation (from `../../node_modules/react-native`)
+  - React/RCTGeolocation (from `../../node_modules/react-native`)
+  - React/RCTImage (from `../../node_modules/react-native`)
+  - React/RCTLinkingIOS (from `../../node_modules/react-native`)
+  - React/RCTNetwork (from `../../node_modules/react-native`)
+  - React/RCTPushNotification (from `../../node_modules/react-native`)
+  - React/RCTSettings (from `../../node_modules/react-native`)
+  - React/RCTText (from `../../node_modules/react-native`)
+  - React/RCTVibration (from `../../node_modules/react-native`)
+  - React/RCTWebSocket (from `../../node_modules/react-native`)
+  - ReactNativeFBAds (from `../../`)
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Bolts
+    - FBAudienceNetwork
+    - FBSDKCoreKit
+
+EXTERNAL SOURCES:
+  React:
+    :path: "../../node_modules/react-native"
+  react-native-fbsdk:
+    :path: "../../node_modules/react-native-fbsdk/ios"
+  ReactNativeFBAds:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  FBAudienceNetwork: c0cda151bb2f7b55d1e045e59ebc81f3153989b2
+  FBSDKCoreKit: 55d7f2ac45d9c4b9b6119f4e43900fe84b9b7b1b
+  React: 5335a2e3ae0e2d64da47622476d4a2db0082eb04
+  react-native-fbsdk: 8a738a123494ae9ba69482a5a8e88aa2108b8245
+  ReactNativeFBAds: aeda23d2b8b096cb55ec7eb63e10796a8cd4eb52
+
+PODFILE CHECKSUM: ab38536a7fb70c62012454f0ff7d7dc5ca661ff9
+
+COCOAPODS: 1.5.0
