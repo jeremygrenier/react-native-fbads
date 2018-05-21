@@ -91,7 +91,11 @@ public class NativeAdManager extends ReactContextBaseJavaModule implements Nativ
 
         for (String key : mAdsManagers.keySet()) {
             NativeAdsManager adsManager = mAdsManagers.get(key);
-            adsManagersState.putBoolean(key, adsManager.isLoaded());
+
+            WritableMap map = Arguments.createMap();
+            map.putBoolean("isValid", adsManager.isLoaded());
+            map.putInt("uniqueNativeAdCount", adsManager.getUniqueNativeAdCount());
+            adsManagersState.putMap(key, map);
         }
 
         sendAppEvent("CTKNativeAdsManagersChanged", adsManagersState);

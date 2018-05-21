@@ -65,10 +65,11 @@ RCT_EXPORT_METHOD(disableAutoRefresh:(NSString*)placementId) {
 }
 
 - (void)nativeAdsLoaded {
-  NSMutableDictionary<NSString*, NSNumber*> *adsManagersState = [NSMutableDictionary new];
+  NSMutableDictionary<NSString *, NSDictionary *> *adsManagersState = [NSMutableDictionary new];
 
   [_adsManagers enumerateKeysAndObjectsUsingBlock:^(NSString* key, FBNativeAdsManager* adManager, __unused BOOL* stop) {
-    [adsManagersState setValue:@([adManager isValid]) forKey:key];
+      NSDictionary *value = @{@"isValid": @([adManager isValid]), @"uniqueNativeAdCount": @([adManager uniqueNativeAdCount])};
+    [adsManagersState setValue:value forKey:key];
   }];
 
   [_bridge.eventDispatcher sendAppEventWithName:@"CTKNativeAdsManagersChanged" body:adsManagersState];
